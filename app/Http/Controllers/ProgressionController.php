@@ -32,7 +32,18 @@ class ProgressionController extends Controller
      */
     public function store(StoreprogressionRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        
+        $progression = Progression::create([
+            'user_id' => 1,
+            'poids' => $validatedData['poids'],
+            'height' => $validatedData['height'],
+            'biceps' => $validatedData['biceps'],
+            'mollet' => $validatedData['mollet'],
+        ]);
+        return response()->json($progression);
+        
+        // return response()->json(['message' => 'Progression created successfully'], 201);
     }
 
     /**
