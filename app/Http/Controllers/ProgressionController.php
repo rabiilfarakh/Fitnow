@@ -41,9 +41,8 @@ class ProgressionController extends Controller
             'biceps' => $validatedData['biceps'],
             'mollet' => $validatedData['mollet'],
         ]);
-        return response()->json($progression);
         
-        // return response()->json(['message' => 'Progression created successfully'], 201);
+        return response()->json(['message' => 'Progression created successfully'], 201);
     }
 
     /**
@@ -67,7 +66,17 @@ class ProgressionController extends Controller
      */
     public function update(UpdateprogressionRequest $request, progression $progression)
     {
-        //
+        $validatedData = $request->validated();
+        
+        $progression->update([
+            'user_id' => 1,
+            'poids' => $validatedData['poids'],
+            'height' => $validatedData['height'],
+            'biceps' => $validatedData['biceps'],
+            'mollet' => $validatedData['mollet'],
+        ]);
+        
+        return response()->json(['message' => 'Progression created successfully']);
     }
 
     /**
