@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('progressions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->float('poids');
+            $table->float('height');
+            $table->float('biceps');
+            $table->float('mollet');
+            $table->enum('status',['terminé','Non terminé'])->default( 'Non terminé' );
             $table->timestamps();
         });
     }

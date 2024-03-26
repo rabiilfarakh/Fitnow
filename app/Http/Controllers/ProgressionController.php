@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\progression;
+use App\Models\User;
 use App\Http\Requests\StoreprogressionRequest;
 use App\Http\Requests\UpdateprogressionRequest;
 
@@ -13,8 +14,10 @@ class ProgressionController extends Controller
      */
     public function index()
     {
-        return response()->json(["msg" => "test"]);
+        $progression = Progression::all(); 
+        return response()->json($progression);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +40,7 @@ class ProgressionController extends Controller
      */
     public function show(progression $progression)
     {
-        //
+        return response()->json($progression);
     }
 
     /**
