@@ -84,6 +84,7 @@ class ProgressionController extends Controller
      */
     public function destroy(progression $progression)
     {
-        //
+        $progression->delete();
+        return response()->json(["message" => "progression deleted"]);
     }
 }
