@@ -26,4 +26,35 @@ class UserController extends Controller
         return response()->json(['message' => 'User registered successfully']);
         // return new UserResource($user);
     }
+
+    public function login(Request $request){
+
+        $this->validate($request,[
+            'email' => 'required|email',
+            'password' => 'required|min:8' 
+        ]);
+    
+        $user = User::where('email', $request->email)->first();
+    
+        if($user){
+    
+            if(Hash::check($request->password, $user->password)){
+                $token = $user->createToken('authToken')->plainTextToken;
+                return response()->json([
+                    'message' => 'Connected Successfully',
+                    'token' => $token
+                ]);
+            }else{
+                return response()->json([
+                    'message' => 'Invalid Credentials'
+                ], 401);
+            }
+    
+        }else{
+            return response()->json([
+                'message' => 'Invalid Credentials'
+            ], 401);
+        }
+    }
+    
 }
