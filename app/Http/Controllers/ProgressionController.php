@@ -42,7 +42,7 @@ class ProgressionController extends Controller
             'mollet' => $validatedData['mollet'],
         ]);
         
-        return response()->json(['message' => 'Progression created successfully'], 201);
+        return response()->json(['message' => 'Progression created successfully']);
     }
 
     /**
