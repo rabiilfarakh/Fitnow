@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::apiResource('progression', ProgressionController::class);
+    Route::get('/logout', [UserController::class, 'logout']);
 });
 
 
