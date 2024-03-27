@@ -6,6 +6,7 @@ use App\Models\progression;
 use App\Models\User;
 use App\Http\Requests\StoreprogressionRequest;
 use App\Http\Requests\UpdateprogressionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProgressionController extends Controller
 {
@@ -34,8 +35,10 @@ class ProgressionController extends Controller
     {
         $validatedData = $request->validated();
         
+        $user_id = Auth::id();
+        
         $progression = Progression::create([
-            'user_id' => 1,
+            'user_id' => $user_id,
             'poids' => $validatedData['poids'],
             'height' => $validatedData['height'],
             'biceps' => $validatedData['biceps'],
@@ -68,15 +71,17 @@ class ProgressionController extends Controller
     {
         $validatedData = $request->validated();
         
+        $user_id = Auth::id();
+        
         $progression->update([
-            'user_id' => 1,
+            'user_id' => $user_id,
             'poids' => $validatedData['poids'],
             'height' => $validatedData['height'],
             'biceps' => $validatedData['biceps'],
             'mollet' => $validatedData['mollet'],
         ]);
         
-        return response()->json(['message' => 'Progression created successfully']);
+        return response()->json(['message' => 'Progression updated successfully']);
     }
 
     /**
