@@ -91,7 +91,7 @@ class ProgressionController extends Controller
             ]);
 
         } else {
-            
+
             $validatedData = $request->validate([
                 'status' => 'required',
             ]);
@@ -102,27 +102,6 @@ class ProgressionController extends Controller
         
         return response()->json(['message' => 'Progression mise à jour avec succès']);
     }
-    
-
-
-    // public function updateStatus(UpdateprogressionRequest $request, Progression $progression)
-    // {
-    //     $validatedData = $request->validated();
-
-    //     if (isset($validatedData['status'])) {
-    //         $status = $validatedData['status'];
-    //     } else {
-    //         return response()->json(['message' => 'Aucun statut fourni. Le statut de la progression reste inchangé.']);
-    //     }
-        
-    //     $user_id = Auth::id();
-        
-    //     $progression->update([
-    //         'status' => $status,
-    //     ]);
-        
-    //     return response()->json(['message' => 'Statut de la progression mis à jour avec succès']);
-    // }
     
 
     /**
