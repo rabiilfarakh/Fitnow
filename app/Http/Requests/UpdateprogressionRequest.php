@@ -26,6 +26,7 @@ class UpdateprogressionRequest extends FormRequest
             'height' => 'required',
             'biceps' => 'required',
             'mollet' => 'required',
+            'status' => 'required',
         ];
     }
 }
